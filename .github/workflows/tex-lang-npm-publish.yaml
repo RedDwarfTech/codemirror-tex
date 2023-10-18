@@ -18,7 +18,13 @@ jobs:
           node-version: 16
       - name: Build App
         run: |
-          cd ./packages/lang-tex/ && npm install -g gulp &&  npm install && gulp build 
+          git config --global url."https://github".insteadOf ssh://git@github
+          cd ./packages/lang-tex/
+          npm install -g pnpm 
+          pnpm setup
+          pnpm install -g gulp 
+          pnpm install
+          gulp build
         env:
           CI: false
       - uses: JS-DevTools/npm-publish@v2
