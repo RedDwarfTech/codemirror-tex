@@ -21,6 +21,7 @@ jobs:
           git config --global url."https://github".insteadOf ssh://git@github
           cd ./packages/lang-tex/
           npm install -g pnpm 
+          pnpm setup
           pnpm install -g gulp 
           pnpm install
           gulp build
