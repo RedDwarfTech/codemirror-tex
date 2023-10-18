@@ -23,6 +23,8 @@ jobs:
           cd ./packages/lang-tex/
           npm install -g pnpm 
           pnpm setup
+          export PATH="/home/runner/bin:$PATH"
+          source ~/.bashrc
           pnpm config set global-bin-dir /home/runner/bin/
           pnpm install -g gulp 
           pnpm install
