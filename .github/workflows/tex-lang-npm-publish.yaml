@@ -19,7 +19,7 @@ jobs:
       - name: Build App
         run: |
           git config --global url."https://github".insteadOf ssh://git@github
-          cd ./package/lang-tex/
+          cd ./packages/lang-tex/
           npm install -g pnpm 
           pnpm install -g gulp 
           pnpm install
