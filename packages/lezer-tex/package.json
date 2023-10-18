@@ -1,5 +1,5 @@
 {
-  "name": "lezer-tex",
+  "name": "rd-lezer-tex",
   "version": "0.0.0-9",
   "description": "lezer-based TeX grammar",
   "keywords": [
