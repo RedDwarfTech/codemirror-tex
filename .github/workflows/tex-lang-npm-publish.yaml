@@ -18,10 +18,10 @@ jobs:
           node-version: 16
       - name: Build App
         run: |
-          cd ./packages/lang-tex/
-          npm install -g gulp 
-          npm install
-          gulp build
+          cd ./packages/lang-tex/ &&
+          npm install -g gulp && 
+          npm install && 
+          gulp build &&
         env:
           CI: false
       - uses: JS-DevTools/npm-publish@v2
