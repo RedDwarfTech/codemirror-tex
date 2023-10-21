@@ -3,7 +3,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import { RollupOptions } from 'rollup';
 import { terser } from 'rollup-plugin-terser';
-import { codepointTransformer } from './tools/transformers';
+//import { codepointTransformer } from './tools/transformers';
 
 export default {
   input: 'src/index.ts',
@@ -15,7 +15,7 @@ export default {
       target: 'es6',
       tsconfig: 'tsconfig.build.json',
       transformers: {
-        before: [codepointTransformer],
+        //before: [codepointTransformer],
       },
     }),
     terser(),

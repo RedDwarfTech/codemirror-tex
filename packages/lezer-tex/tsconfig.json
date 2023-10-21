@@ -1,9 +1,18 @@
 {
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "module": "ESNext",
     "rootDir": ".",
     "allowJs": true
+  },
+  "ts-node": {
+    "esm": true,
+    // https://github.com/TypeStrong/ts-node/issues/422
+    "experimentalSpecifierResolution": "node",
   },
   "include": ["src", "tests", "third_party"]
 }

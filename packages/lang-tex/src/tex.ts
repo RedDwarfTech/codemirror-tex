@@ -8,7 +8,7 @@ import {
   LezerLanguage,
   TreeIndentContext,
 } from '@codemirror/language';
-import parser from 'lezer-tex';
+import parser from 'rd-lezer-tex';
 
 function simpleIndent(units = 1) {
   return (context: TreeIndentContext) => {

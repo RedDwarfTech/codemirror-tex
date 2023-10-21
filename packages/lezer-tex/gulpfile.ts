@@ -1,16 +1,22 @@
 import { createReadStream } from 'fs';
 import { mkdir, readFile, writeFile } from 'fs/promises';
-import { series, task } from 'gulp';
-import { run as runJest } from 'jest';
-import { render } from 'mustache';
+import run from 'jest';
+import Musache from 'mustache';
 import { join } from 'path';
 import { createInterface } from 'readline';
 import { rollup } from 'rollup';
 import { parse } from 'yaml';
-import rollupConfig from './rollup.config';
+import rollupConfig from './rollup.config.js';
 import { lzwEncode } from './src/utils/lzw';
 import { Trie } from './src/utils/trie';
 import { buildParserFile } from './third_party/lezer-generator/src/build';
+import gpkg from 'gulp';
+
+const { series, task } = gpkg;
+const { run: runJest } = run;
+
+import path from 'path';
+const __dirname = path.resolve();
 
 const enum Term {
   FirstTerm = 35,
@@ -160,7 +166,7 @@ async function generateCommands() {
 task('generate-commands', series('read-commands', generateCommands));
 
 async function generateParser() {
-  const grammarFile = render(
+  const grammarFile = Musache.render(
     await readFile(join(__dirname, 'src/tex.grammar'), { encoding: 'utf-8' }),
     {
       tokens: tokens.join(',\n '),
@@ -179,7 +185,7 @@ task('generate', series('generate-parser', 'generate-commands'));
 async function buildREADME() {
   await writeFile(
     join(__dirname, 'README.md'),
-    render(await readFile(join(__dirname, 'src/docs/README.md'), { encoding: 'utf-8' }), {
+    Musache.render(await readFile(join(__dirname, 'src/docs/README.md'), { encoding: 'utf-8' }), {
       commands: Object.entries(
         commands.reduce<Record<string, CommandDescription[]>>((t, v) => {
           const key = v.name[0].toLocaleUpperCase();

@@ -6,6 +6,9 @@ import { createProject } from 'gulp-typescript';
 import WebpackDevServer from 'webpack-dev-server';
 import webpackConfig from './webpack.config';
 
+import path from 'path';
+const __dirname = path.resolve();
+
 const tsProject = createProject('tsconfig.build.json');
 
 function build() {
@@ -24,6 +27,8 @@ function serve() {
     host: '127.0.0.1',
   };
   const compiler = webpack(webpackConfig);
-  return new WebpackDevServer(compiler, devServerConfig).listen(9000, 'localhost');
+  return new WebpackDevServer(compiler, devServerConfig).listen(9000, 'localhost',()=>{
+    console.log('start success...');
+  });
 }
 task('serve', serve);
