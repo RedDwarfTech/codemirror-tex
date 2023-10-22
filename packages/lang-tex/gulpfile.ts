@@ -6,9 +6,6 @@ import { createProject } from 'gulp-typescript';
 import WebpackDevServer from 'webpack-dev-server';
 import webpackConfig from './webpack.config';
 
-import path from 'path';
-const __dirname = path.resolve();
-
 const tsProject = createProject('tsconfig.build.json');
 
 function build() {

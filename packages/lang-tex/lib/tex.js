@@ -1,6 +1,6 @@
 import { styleTags, tags as t } from '@codemirror/highlight';
 import { flatIndent, foldInside, foldNodeProp, indentNodeProp, LanguageSupport, LezerLanguage, } from '@codemirror/language';
-import parser from 'lezer-tex';
+import parser from 'rd-lezer-tex';
 function simpleIndent(units = 1) {
     return (context) => {
         return context.baseIndent + context.unit * units;
